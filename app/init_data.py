@@ -3,7 +3,7 @@ import py7zr
 import shutil
 import os
 from pathlib import Path
-from german_compound_splitter import comp_split
+from german_compound_splitter import comp_split # type: ignore
 
 DICTIONARY_URL = 'https://sourceforge.net/projects/germandict/files/german.7z'
 DEST_DIR       = Path('data/')

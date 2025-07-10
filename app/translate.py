@@ -1,7 +1,5 @@
-from googletrans import Translator
-
-translator = Translator()
+from deep_translator import GoogleTranslator
 
 def translate(words:list[str], dest='en') -> dict:
-    translations = [translator.translate(word, src='de', dest=dest) for word in words]
-    return {t.origin: t.text for t in translations}
+    translator = GoogleTranslator(source='de', target=dest)
+    return {word: translator.translate(word) for word in words}

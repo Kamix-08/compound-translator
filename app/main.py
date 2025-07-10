@@ -3,7 +3,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
-from app.inti_data import get_ahocs
+from app.init_data import get_ahocs
 from app.split import split
 from app.translate import translate
 
