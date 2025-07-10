@@ -1,27 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
 <head>
     <meta charset="UTF-8">
-    <title>German Compound Splitter</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-</head>
-<body class="container py-5">
-    <h1 class="mb-4">German Compound Splitter</h1>
-    <form method="post" action="/process">
-        <div class="mb-3">
-            <input type="text" name="word" class="form-control" placeholder="Enter a compound German word..." required>
-        </div>
-        <button type="submit" class="btn btn-primary">Split & Translate</button>
-    </form>
+    <title>Compound Splitter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    {% if subwords %}
-    <hr>
-    <h3>Results for "{{ original }}"</h3>
-    <ul>
-        {% for word in [original] + subwords %}
-            <li><strong>{{ word }}</strong> → {{ translations[word] }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+</head>
+<body class="min-h-screen flex flex-col items-center justify-start p-6">
+    <div class="w-full max-w-xl bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6 space-y-6">
+        <h1 class="text-3xl font-bold text-center text-indigo-700 dark:text-indigo-400">German Compound Splitter</h1>
+
+        <form method="post" action="/process" class="space-y-4">
+            <input 
+                type="text" 
+                name="word" 
+                placeholder="Enter a compound word (e.g. Donaudampfschiff...)"
+                class="w-full px-4 py-2 rounded-xl border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:placeholder-gray-400 focus:ring-2 focus:ring-indigo-500 outline-none"
+                required
+            >
+            <button 
+                type="submit" 
+                class="w-full bg-indigo-600 text-white py-2 rounded-xl hover:bg-indigo-700 transition">
+                Split & Translate
+            </button>
+        </form>
+
+        {% if subwords %}
+        <div class="pt-4 border-t border-gray-200 dark:border-gray-600">
+            <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4">Results</h2>
+
+            <div class="flex flex-wrap gap-2 justify-between items-start px-4 py-3 rounded-lg bg-indigo-100 dark:bg-indigo-600 text-indigo-800 dark:text-white font-semibold border border-indigo-200 dark:border-indigo-500 mb-3 shadow-sm break-words">
+                <span class="w-full sm:w-auto break-words">{{ original }}</span>
+                <span class="italic text-sm text-indigo-700 dark:text-indigo-100 w-full sm:w-auto break-words text-right sm:text-left">{{ translations[original] }}</span>
+            </div>
+
+            <ul class="space-y-2">
+                {% for word in subwords %}
+                <li class="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-150 break-words">
+                    <span class="font-medium break-words">{{ word }}</span>
+                    <span class="italic text-sm text-gray-600 dark:text-gray-300 break-words sm:text-right">{{ translations[word] }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
 </body>
 </html>
