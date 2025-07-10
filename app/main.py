@@ -18,16 +18,17 @@ ahocs = get_ahocs()
 
 @app.get('/', response_class=HTMLResponse)
 async def index(request:Request):
-    return templates.TemplateResponse('index.html', {'request': request})
+    return templates.TemplateResponse('index.html', {'request': request, "target": "en"})
 
 @app.post('/process', response_class=HTMLResponse)
-async def process(request:Request, word:str = Form(...)):
+async def process(request:Request, word:str = Form(...), lang:str = Form('en')):
     subwords = split(word, ahocs)
     all_words = [word] + subwords
-    translations = translate(all_words)
+    translations = translate(all_words, dest=lang)
     return templates.TemplateResponse('index.html', {
         'request': request,
         'original': word,
         'subwords': subwords,
-        'translations': translations
+        'translations': translations,
+        'target': lang
     })
