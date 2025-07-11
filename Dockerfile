@@ -1,12 +1,12 @@
 FROM python:3.13-slim
-RUN apt update && apt install -y git
+RUN apt update && apt install -y git gcc
 
 WORKDIR /build
 
 COPY ./requirements.txt /build/requirements.txt
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
-RUN apt purge -y git
+RUN apt purge -y git gcc
 
 COPY ./app /build/app
 
