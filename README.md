@@ -8,7 +8,7 @@ A web-based app, that splits compound German nouns and translates them automatic
 
 ---
 
-## Installation
+## Installation (development)
 
 ```bash
 git clone https://github.com/kamix-08/compound-translator.git
@@ -26,6 +26,21 @@ uvicorn app.main:app --reload
 ```
 
 Then visit [localhost:8000](https://localhost:8000) in your browser.
+
+## Installation (docker)
+
+```bash
+docker run -d -p 8080:80 -v ./data:/build/data ghcr.io/kamix-08/compound-translator
+```
+### Installation with Docker Compose
+
+Copy the `docker-compose.yml` file to an empty directory, then run:
+
+```bash
+docker-compose up -d
+```
+
+Then visit [localhost:8080](https://localhost:8080) in your browser.
 
 ## Gallery
 
