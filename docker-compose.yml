@@ -1,6 +1,6 @@
 services:
   compound-translator:
-    image: ghcr.io/Kamix-08/compound-translator
+    image: ghcr.io/Kamix-08/compound-translator:latest
     ports:
       - 8080:80 # change to localhost:8080:80 to not expose the port to outside
     volumes:
