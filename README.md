@@ -32,6 +32,7 @@ Then visit [localhost:8000](https://localhost:8000) in your browser.
 ```bash
 docker run -d -p 8080:80 -v ./data:/build/data ghcr.io/kamix-08/compound-translator
 ```
+
 ### Installation with Docker Compose
 
 Copy the `docker-compose.yml` file to an empty directory, then run:
@@ -44,12 +45,13 @@ Then visit [localhost:8080](https://localhost:8080) in your browser.
 
 ## Gallery
 
-<img alt="Landing page" src="./images/screenshot1.png" />
-<img alt="Translation"  src="./images/screenshot2.png" />
+<img alt="Translation" src="./images/s1.png" />
+<img alt="Translation" src="./images/s2.png" />
+<img alt="Translation" src="./images/s3.png" />
 
 
 ## Credits
 
 - compound splitting via [`german_compound_splitter`](https://github.com/repodiac/german_compound_splitter)
-- dictionary sourced from [SourceForge](https://sourceforge.net/projects/germandict)
+- dictionary sourced from an [Arch Linux mirror](https://mirror.rackspace.com/archlinux), as a part of the [Words](https://en.wikipedia.org/wiki/Words_(Unix)) package
 - favicon comes from [Flaticon](https://flaticon.com)
