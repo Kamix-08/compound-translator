@@ -4,5 +4,5 @@ jinja2
 deep-translator
 zstandard
 requests
-german-compound-splitter @ git+https://github.com/repodiac/german_compound_splitter
+german-compound-splitter @ git+https://github.com/kamix-08/german_compound_splitter
 python-multipart
